@@ -9,10 +9,15 @@
 #include "treemap.h"
 
 
+typedef struct{
+   char nombre[30];
+   HashMap* distancias;
+
+}Ciudad;
 
 
 
-const char *get_csv_field (char * , int );
+const char *get_txt_field (char * , int );
 
 char * toString(int );
 
@@ -20,6 +25,11 @@ int lower_than_string(void* , void* );
 
 int lower_than_int(void* , void* );
 
+void agregaInfo (HashMap*, char* , char* , int );
+
+Ciudad * crearCiudad(char *  );
+
+ void ImportarCiudades(HashMap * );
 
 
 #endif // funciones_h
