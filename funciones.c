@@ -50,7 +50,7 @@ int lower_than_int(void* key1, void* key2){ //This function compare 2 keys *int
 }
 
 
-void agregaInfo (HashMap* ciudades, char* ciudad1, char* ciudad2, int distancia){
+void agregaInfo (TreeMap* ciudades, char* ciudad1, char* ciudad2, int distancia){
 
 Ciudad* c1;
  Ciudad* c2;
@@ -127,10 +127,7 @@ char * toString(int id){
 
 }
 
-
-
-
-void ImportarCiudades( HashMap * Ciudades){
+void ImportarCiudades( TreeMap * Ciudades){
   printf("awa");
     system("cls");
     printf("Please enter the file name (n_n) ");
@@ -156,14 +153,30 @@ void ImportarCiudades( HashMap * Ciudades){
         char * ciudad1 = get_txt_field(line, 0);
         char * ciudad2 = get_txt_field(line, 1);
         int distancia =  atoi(get_txt_field(line, 2));
-        printf("%s %s %d\n", ciudad1,ciudad2,distancia);
         agregaInfo(Ciudades,ciudad1,ciudad2,distancia);
 
 
     }
 
-    printf("All the games were imported correctly (^_^) "); //message that pops out on the window if all the games were imported correctly
+    printf("All the Distances were imported correctly (^_^) "); //message that pops out on the window if all the games were imported correctly
     system("pause");
     system("cls");
 
 }
+
+Ciudad * ciudadMasCercana (TreeMap * Ciudades, char * nombreCiudad){
+Ciudad * ciudad;
+ciudad = searchMap(Ciudades,nombreCiudad);
+int Capacidad = mapcapacity(ciudad->distancias);
+int i;
+int mayor = 0;
+ for (i = 0; i < Capacidad ; i++){
+ if (mayor < (searchTreeMap(ciudad->distancias,))){
+    mayor = searchTreeMap(ciudad->distancias,);
+    }
+ }
+printf("%s",mayor);
+return mayor;
+}
+
+// Ciudad más cercana (char* nombreCiudad): La aplicación imprime por pantalla la ciudad más cercana a la ciudad ingresada.

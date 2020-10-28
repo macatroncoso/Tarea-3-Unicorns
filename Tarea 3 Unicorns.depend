@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1602558058 source:c:\users\macar\desktop\tarea 3 unicorns\hashmap.c
+1603909800 source:c:\users\macar\desktop\tarea 3 unicorns\hashmap.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -26,13 +26,13 @@
 
 1602558058 c:\users\macar\desktop\tarea 3 unicorns\treemap.h
 
-1603903094 source:c:\users\macar\desktop\tarea 3 unicorns\main.c
+1603912415 source:c:\users\macar\desktop\tarea 3 unicorns\main.c
 	<stdio.h>
 	<stdlib.h>
 	"hashmap.h"
 	"funciones.h"
 
-1603902626 c:\users\macar\desktop\tarea 3 unicorns\funciones.h
+1603912415 c:\users\macar\desktop\tarea 3 unicorns\funciones.h
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
@@ -40,7 +40,7 @@
 	"hashmap.h"
 	"treemap.h"
 
-1603903079 source:c:\users\macar\desktop\tarea 3 unicorns\funciones.c
+1603910237 source:c:\users\macar\desktop\tarea 3 unicorns\funciones.c
 	"funciones.h"
 	<stdbool.h>
 

@@ -32,6 +32,10 @@ long mapsize(HashMap* map){
 return map->size ;
 }
 
+long mapcapacity(HashMap* map){
+return map->capacity;
+}
+
 long hash( char * key, long capacity) {
     unsigned long hash = 0;
      char * ptr;
