@@ -10,8 +10,17 @@
 #define HashMap_h
 
 typedef struct HashMap HashMap;
+typedef struct Pair Pair;
+
+
+struct Pair{
+     char * key;
+     void * value;
+};
 
 HashMap * createMap(long capacity);
+
+long mapcapactity(HashMap* );
 
 void insertMap(HashMap * table, char * key, void * value);
 
@@ -19,9 +28,9 @@ void eraseMap(HashMap * table, char * key);
 
 void * searchMap(HashMap * table, char * key);
 
-void * firstMap(HashMap * table);
+Pair * firstMap(HashMap * table);
 
-void * nextMap(HashMap * table);
+Pair * nextMap(HashMap * table);
 
 
 void enlarge(HashMap * map);

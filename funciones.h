@@ -11,14 +11,13 @@
 
 typedef struct{
    char nombre[30];
-   TreeMap* distancias;
+   HashMap* distancias;
 
 }Ciudad;
 
 
-Ciudad * ciudadMasCercana (TreeMap * , char * );
 
-const char *get_txt_field (char * , int );
+ char *get_txt_field (char * , int );
 
 char * toString(int );
 
@@ -26,11 +25,13 @@ int lower_than_string(void* , void* );
 
 int lower_than_int(void* , void* );
 
-void agregaInfo (TreeMap*, char* , char* , int );
+void agregaInfo (HashMap*, char* , char* , int );
 
 Ciudad * crearCiudad(char *  );
 
- void ImportarCiudades(TreeMap * );
+ void ImportarCiudades(HashMap * );
+
+ void  ciudadMasCercana (HashMap * , char * );
 
 
 #endif // funciones_h

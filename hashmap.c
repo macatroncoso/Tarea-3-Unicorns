@@ -9,10 +9,7 @@ typedef struct Pair Pair;
 typedef struct HashMap;
 int enlarge_called=0;
 
-struct Pair {
-     char * key;
-     void * value;
-};
+
 
 struct HashMap {
     Pair ** buckets;
@@ -31,9 +28,8 @@ Pair * createPair( char * key,  void * value) {
 long mapsize(HashMap* map){
 return map->size ;
 }
-
-long mapcapacity(HashMap* map){
-return map->capacity;
+long mapcapactity(HashMap* map){
+return map->capacity ;
 }
 
 long hash( char * key, long capacity) {
@@ -147,12 +143,12 @@ void * searchMap(HashMap * map,  char * key) {
     return NULL;
 }
 
-void * firstMap(HashMap * map) {
+Pair * firstMap(HashMap * map) {
 int i;
  for (i = 0 ; i < map->capacity;i++){
    if (map->buckets[i]!= NULL && map->buckets[i]->key != NULL){
    map->current = i;
-   return map->buckets[i]->value;
+   return map->buckets[i];
   }
  }
  return NULL;
@@ -174,7 +170,7 @@ int i;
 }
 
 
-void * nextMap(HashMap * map) {
+Pair * nextMap(HashMap * map) {
 int i;
 
  for (i = (map->current)+1; i < map->capacity;i++){
@@ -182,7 +178,7 @@ int i;
    if (map->buckets[i]!= NULL ){
 
   map->current= i;
-   return map->buckets[i]->value;
+   return map->buckets[i];
   }
  }
     return NULL;

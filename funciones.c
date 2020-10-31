@@ -1,39 +1,36 @@
 #include "funciones.h"
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+char * _strdup (const char *s) {
+    size_t len = strlen (s) + 1;
+    void *new = malloc (len);
 
-const char *get_txt_field (char * tmp, int k) {
-int open_mark = 0;
-    char* ret=(char*) malloc (100*sizeof(char));
-    int ini_i=0, i=0;
-    int j=0;
-    while(tmp[i+1]!='\0'){
+    if (new == NULL)
+    	return NULL;
 
+    return (char *) memcpy (new, s, len);
+}
 
-        if(open_mark || tmp[i]!= ' '){
-            if(k==j) ret[i-ini_i] = tmp[i];
-            i++;
-            continue;
-        }
+char *get_txt_field (char * tmp, int k) {
 
-        if(tmp[i]== ' '){
-            if(k==j) {
-               ret[i-ini_i] = 0;
-               return ret;
-            }
-            j++; ini_i = i+1;
-        }
+    char * tmpDup = _strdup(tmp);
 
+    const char character[2] = " ";
+    char *token = (char *) malloc (50 * sizeof (char));
+
+    int i = 0;
+
+    token = strtok(tmpDup, character);
+
+    while(i < k && token != NULL){
+
+        token = strtok(NULL, character);
         i++;
     }
 
-    if(k==j) {
-       ret[i-ini_i] = 0;
-       return ret;
-    }
-
-    return NULL;
-
+    return token;
 }
 
 int lower_than_string(void* key1, void* key2){
@@ -50,28 +47,30 @@ int lower_than_int(void* key1, void* key2){ //This function compare 2 keys *int
 }
 
 
-void agregaInfo (TreeMap* ciudades, char* ciudad1, char* ciudad2, int distancia){
+void agregaInfo (HashMap* Ciudades, char* ciudad1, char* ciudad2, int distancia){
 
-Ciudad* c1;
- Ciudad* c2;
+Ciudad * city1;
+Ciudad * city2;
 
-      if (searchMap(ciudades,ciudad1)== NULL){
-         c1 = crearCiudad(ciudad1);
-         insertMap(ciudades, ciudad1, c1);}
+      if (searchMap(Ciudades,ciudad1)== NULL){
+       city1 = crearCiudad(ciudad1);
+       insertMap(Ciudades,ciudad1,city1);}
       else {
-       c1 = searchMap(ciudades,ciudad1);
-      }
-      if (searchMap(ciudades,ciudad2)==NULL){
-        c2= crearCiudad(ciudad2);
-         insertMap(ciudades,ciudad2,c2);}
-       else {
-       c2 = searchMap(ciudades,ciudad2);
+       city1 = searchMap(Ciudades,ciudad1);
       }
 
-     insertMap(c1->distancias,ciudad2,distancia);
-     insertMap(c2->distancias,ciudad1,distancia);
+     if (searchMap(Ciudades,ciudad1)== NULL){
+        city2 = crearCiudad(ciudad2);
+        insertMap(Ciudades, ciudad2,city2);}
+      else {
+       city2 = searchMap(Ciudades,ciudad1);
+      }
+
+     insertMap(city1->distancias,ciudad2,distancia);
+     insertMap(city2->distancias,ciudad1,distancia);
 
 }
+
 
 Ciudad * crearCiudad(char * name ) {
    Ciudad* nuevaCiudad= (Ciudad *) malloc (sizeof(Ciudad));
@@ -127,12 +126,13 @@ char * toString(int id){
 
 }
 
-void ImportarCiudades( TreeMap * Ciudades){
-  printf("awa");
+
+void ImportarCiudades( HashMap * Ciudades){
     system("cls");
     printf("Please enter the file name (n_n) ");
     char name[50]; //the name of the file that has the games
     FILE * fp;
+    Pair * check;
 
     do{
 
@@ -148,6 +148,7 @@ void ImportarCiudades( TreeMap * Ciudades){
 
     char line [1024];
 
+
     while( fgets(line, 1023, fp) != NULL ){  //read and get every field of the csv file
 
         char * ciudad1 = get_txt_field(line, 0);
@@ -155,28 +156,40 @@ void ImportarCiudades( TreeMap * Ciudades){
         int distancia =  atoi(get_txt_field(line, 2));
         agregaInfo(Ciudades,ciudad1,ciudad2,distancia);
 
-
     }
 
-    printf("All the Distances were imported correctly (^_^) "); //message that pops out on the window if all the games were imported correctly
+
+    printf("All the Cities were imported correctly (^_^) "); //message that pops out on the window if all the games were imported correctly
     system("pause");
     system("cls");
 
+
+
 }
 
-Ciudad * ciudadMasCercana (TreeMap * Ciudades, char * nombreCiudad){
+
+void  ciudadMasCercana (HashMap * Ciudades, char * nombreCiudad){
+
 Ciudad * ciudad;
 ciudad = searchMap(Ciudades,nombreCiudad);
-int Capacidad = mapcapacity(ciudad->distancias);
+//long Capacidad = mapcapactity(ciudad->distancias);
+if (ciudad == NULL) return;
+Pair* compare = firstMap(ciudad->distancias);
+int menor = 900;
+char * name;
 int i;
-int mayor = 0;
- for (i = 0; i < Capacidad ; i++){
- if (mayor < (searchTreeMap(ciudad->distancias,))){
-    mayor = searchTreeMap(ciudad->distancias,);
-    }
- }
-printf("%s",mayor);
-return mayor;
+while(compare != NULL){
+   if  (menor > (compare->value) && (strcmp(compare->key,nombreCiudad)!= 0) ){
+    menor = compare->value;
+    name = compare->key;
+   }
+compare = nextMap(ciudad->distancias);
+}
+printf("%d %s \n",menor,name);
+    system("pause");
+    system("cls");
 }
 
-// Ciudad más cercana (char* nombreCiudad): La aplicación imprime por pantalla la ciudad más cercana a la ciudad ingresada.
+
+
+

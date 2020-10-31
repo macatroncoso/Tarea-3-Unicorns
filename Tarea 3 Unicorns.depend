@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1603909800 source:c:\users\macar\desktop\tarea 3 unicorns\hashmap.c
+1602558058 source:c:\users\macar\desktop\tarea 3 unicorns\hashmap.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -26,13 +26,13 @@
 
 1602558058 c:\users\macar\desktop\tarea 3 unicorns\treemap.h
 
-1603912415 source:c:\users\macar\desktop\tarea 3 unicorns\main.c
+1603903094 source:c:\users\macar\desktop\tarea 3 unicorns\main.c
 	<stdio.h>
 	<stdlib.h>
 	"hashmap.h"
 	"funciones.h"
 
-1603912415 c:\users\macar\desktop\tarea 3 unicorns\funciones.h
+1603902626 c:\users\macar\desktop\tarea 3 unicorns\funciones.h
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
@@ -40,7 +40,99 @@
 	"hashmap.h"
 	"treemap.h"
 
-1603910237 source:c:\users\macar\desktop\tarea 3 unicorns\funciones.c
+1603903079 source:c:\users\macar\desktop\tarea 3 unicorns\funciones.c
 	"funciones.h"
 	<stdbool.h>
+
+1603907646 source:x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\funciones.c
+	"funciones.h"
+	<stdbool.h>
+
+1603913104 x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1603907646 x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1603907646 x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\hashmap.h
+
+1603907646 x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\treemap.h
+
+1603907646 source:x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1603907646 source:x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1603907646 source:x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1603913120 source:x:\mailpucvrecovery\onedrive - mail.pucv.cl\escritorio\tarea-3-unicorns-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	"hashmap.h"
+	"funciones.h"
+
+1604180546 source:c:\users\macar\desktop\tarea-3-unicorns-main\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+
+1604180546 c:\users\macar\desktop\tarea-3-unicorns-main\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1603907646 c:\users\macar\desktop\tarea-3-unicorns-main\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1604162190 c:\users\macar\desktop\tarea-3-unicorns-main\hashmap.h
+
+1603907646 c:\users\macar\desktop\tarea-3-unicorns-main\treemap.h
+
+1604162153 source:c:\users\macar\desktop\tarea-3-unicorns-main\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1603907646 source:c:\users\macar\desktop\tarea-3-unicorns-main\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1603907646 source:c:\users\macar\desktop\tarea-3-unicorns-main\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1604177639 source:c:\users\macar\desktop\tarea-3-unicorns-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	"hashmap.h"
+	"funciones.h"
 
