@@ -50,7 +50,7 @@ int lower_than_int(void* key1, void* key2){ //This function compare 2 keys *int
 void agregaInfo (HashMap* Ciudades, char* ciudad1, char* ciudad2, int distancia){
 
 Ciudad * city1;
-Ciudad * city2;
+ Ciudad * city2;
 
       if (searchMap(Ciudades,ciudad1)== NULL){
        city1 = crearCiudad(ciudad1);
@@ -59,15 +59,20 @@ Ciudad * city2;
        city1 = searchMap(Ciudades,ciudad1);
       }
 
-     if (searchMap(Ciudades,ciudad1)== NULL){
+     if (searchMap(Ciudades,ciudad2)== NULL){
         city2 = crearCiudad(ciudad2);
         insertMap(Ciudades, ciudad2,city2);}
       else {
-       city2 = searchMap(Ciudades,ciudad1);
+       city2 = searchMap(Ciudades,ciudad2);
       }
 
-     insertMap(city1->distancias,ciudad2,distancia);
-     insertMap(city2->distancias,ciudad1,distancia);
+     if(searchMap(city1->distancias, ciudad2) == NULL){
+        insertMap(city1->distancias,ciudad2,distancia);
+     }
+
+     if(searchMap(city2->distancias, ciudad1) == NULL){
+        insertMap(city2->distancias,ciudad1,distancia);
+     }
 
 }
 
@@ -188,6 +193,85 @@ compare = nextMap(ciudad->distancias);
 printf("%d %s \n",menor,name);
     system("pause");
     system("cls");
+}
+
+void crearRuta(HashMap* ciudades, char * nombreCiudad){
+
+    Ciudad * ciudad = searchMap(ciudades, nombreCiudad);
+    if (ciudad == NULL){
+        return;
+    }
+
+    int i = 0;
+    int distanciaTotal = 0;
+
+    mostrarCiudadesAdyacentes(ciudad);
+    Ciudad ** CiudadyDistancia = (Ciudad **)malloc (30*sizeof(Ciudad *));
+    CiudadyDistancia[0] = ciudad;
+
+    char nombreCiudadAdyacente[30];
+
+    do{
+
+        printf("\nIngrese otra ciudad: "); // se iran ingresando ciudades hasta que el usuario digite 0, si es asi, se sale del ciclo y termina
+        fflush(stdin);
+        do{
+           scanf("%s", nombreCiudadAdyacente);
+           if (nombreCiudadAdyacente == NULL){
+                printf("Ingrese una ciudad correcta");
+           }
+        }while(nombreCiudadAdyacente==NULL);
+
+
+
+        if (strcmp(nombreCiudadAdyacente, "0") == 0){
+            break;
+        }
+
+        if( searchMap(ciudad->distancias, nombreCiudadAdyacente) == NULL){
+            return;
+        }
+
+        //si nos movemos a la ciudad, entonces sumamos la distancia recorrida
+        distanciaTotal += searchMap(ciudad->distancias, nombreCiudadAdyacente); //el mapa de distancias guarda como valor la distancia entre las dos ciudades
+
+        Ciudad * ciudadAdyacente = searchMap(ciudades, nombreCiudadAdyacente);
+
+        mostrarCiudadesAdyacentes(ciudadAdyacente);
+
+        i++;
+
+        CiudadyDistancia[i] = ciudadAdyacente;
+
+        ciudad = ciudadAdyacente;
+
+    }while (strcmp(nombreCiudadAdyacente, "0") != 0);
+
+    printf("\nRecorrido: \n\n");
+
+    printf("Comienzo: %s -> ", CiudadyDistancia[0]->nombre);
+
+    for( i = 1 ; CiudadyDistancia[i] != NULL ; i++){
+
+        if(CiudadyDistancia[i + 1] != NULL){
+
+            printf("%s -> ", CiudadyDistancia[i]->nombre);
+
+        }
+        else{
+
+            printf("Fin de la ruta: %s", CiudadyDistancia[i]->nombre);
+
+        }
+
+    }
+
+    printf("\nDistancia total recorrida: %d KM", distanciaTotal);
+
+    printf("\n");
+    system("pause");
+    system("cls");
+
 }
 
 
