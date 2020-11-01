@@ -33,5 +33,6 @@ Ciudad * crearCiudad(char *  );
 
  void  ciudadMasCercana (HashMap * , char * );
 
+void crearRuta(HashMap*, char *);
 
 #endif // funciones_h
