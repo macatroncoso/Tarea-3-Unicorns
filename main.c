@@ -16,7 +16,7 @@ int main()
         printf("Welcome to the Unicorn's GPS App (n _ n) What would you like to do?  \n\n");
         printf("Option 1 <3 : Import Distances from a file \n");
         printf("Option 2 <3 : Show the nearest city\n");
-        printf("Option 3 <3 : Add game \n");
+        printf("Option 3 <3 : Create Route\n");
         printf("Option 4 <3 : Search game by Name \n");
         printf("Option 5 <3 : Search game by type/s \n");
         printf("Option 6 <3 : Exit \n");
@@ -36,6 +36,17 @@ int main()
                  scanf("%s",nombreCiudad);
                    fflush(stdin);
                 ciudadMasCercana(Ciudades, nombreCiudad);
+                break;
+            case 3:  printf("Please enter la ciudad de origen ");
+                fflush(stdin);
+                do{
+                   scanf("%s",nombreCiudad);
+                   if (nombreCiudad == NULL){
+                     printf("Ingrese una ciudad correcta");
+                   }
+                   crearRuta(Ciudades, nombreCiudad);
+                }while(nombreCiudad==NULL);
+                   fflush(stdin);
                 break;
         }
 
