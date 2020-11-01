@@ -7,6 +7,7 @@ int main()
     HashMap* Ciudades = createMap(200);
     int option;
     char nombreCiudad[30];
+ int cont;
 
     while(1){
 
@@ -37,19 +38,22 @@ int main()
                    fflush(stdin);
                 ciudadMasCercana(Ciudades, nombreCiudad);
                 break;
-            case 3:  printf("Please enter la ciudad de origen ");
+            case 3:
+                printf("Whenever you want to end the route, please type 0\n");
+                printf("Please enter the city of the beginning of the route ");
                 fflush(stdin);
                 do{
+                   cont = 1;
                    scanf("%s",nombreCiudad);
-                   if (nombreCiudad == NULL){
-                     printf("Ingrese una ciudad correcta");
+                   if (searchMap(Ciudades,nombreCiudad)== NULL){
+                     printf("Please enter a valid City\n");
                    }
-                   crearRuta(Ciudades, nombreCiudad);
-                }while(nombreCiudad==NULL);
+                   else cont = 0;
+                }while(cont==1);
+                crearRuta(Ciudades, nombreCiudad);
                    fflush(stdin);
                 break;
         }
-
         if(option == 6){
 
             break;  //breaks the program
