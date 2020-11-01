@@ -197,6 +197,7 @@ printf("%d %s \n",menor,name);
 
 void crearRuta(HashMap* ciudades, char * nombreCiudad){
 
+
     Ciudad * ciudad = searchMap(ciudades, nombreCiudad);
     if (ciudad == NULL){
         return;
@@ -204,6 +205,7 @@ void crearRuta(HashMap* ciudades, char * nombreCiudad){
 
     int i = 0;
     int distanciaTotal = 0;
+    int cont;
 
     mostrarCiudadesAdyacentes(ciudad);
     Ciudad ** CiudadyDistancia = (Ciudad **)malloc (30*sizeof(Ciudad *));
@@ -211,16 +213,24 @@ void crearRuta(HashMap* ciudades, char * nombreCiudad){
 
     char nombreCiudadAdyacente[30];
 
+
+
     do{
 
         printf("\nIngrese otra ciudad: "); // se iran ingresando ciudades hasta que el usuario digite 0, si es asi, se sale del ciclo y termina
         fflush(stdin);
+
         do{
-           scanf("%s", nombreCiudadAdyacente);
-           if (nombreCiudadAdyacente == NULL){
-                printf("Ingrese una ciudad correcta");
-           }
-        }while(nombreCiudadAdyacente==NULL);
+                   cont = 1;
+                   scanf("%s",nombreCiudadAdyacente);
+
+          if (strcmp(nombreCiudadAdyacente, "0") == 0){
+            break;
+        }else if  (searchMap(ciudades,nombreCiudadAdyacente)== NULL){
+                     printf("Please enter a valid City\n");
+                   }
+                   else cont = 0;
+                }while(cont==1);
 
 
 
@@ -246,6 +256,8 @@ void crearRuta(HashMap* ciudades, char * nombreCiudad){
         ciudad = ciudadAdyacente;
 
     }while (strcmp(nombreCiudadAdyacente, "0") != 0);
+
+
 
     printf("\nRecorrido: \n\n");
 
@@ -274,6 +286,16 @@ void crearRuta(HashMap* ciudades, char * nombreCiudad){
 
 }
 
+ void mostrarCiudadesAdyacentes(Ciudad * ciudad ){
+
+    Pair * adyacente= firstMap(ciudad->distancias);
+    printf("\n");
+    while(adyacente){
+        printf("%s\n",adyacente->key);
+        adyacente=nextMap(ciudad->distancias);
+    }
+
+}
 
 
 
