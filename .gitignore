@@ -1,4 +1,1 @@
-*.exe
-a.out
-git add -f obj
-git add -f *bin
+*bin
