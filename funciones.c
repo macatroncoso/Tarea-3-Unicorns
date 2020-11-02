@@ -3,29 +3,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char * _strdup (const char *s) {
+char * _strdup (const char *s) 
+{
     size_t len = strlen (s) + 1;
     void *new = malloc (len);
-
     if (new == NULL)
     	return NULL;
 
-    return (char *) memcpy (new, s, len);
+return (char *) memcpy (new, s, len);
 }
 
-char *get_txt_field (char * tmp, int k) {
-
+char *get_txt_field (char * tmp, int k) 
+{
     char * tmpDup = _strdup(tmp);
-
     const char character[2] = " ";
     char *token = (char *) malloc (50 * sizeof (char));
-
     int i = 0;
-
     token = strtok(tmpDup, character);
-
-    while(i < k && token != NULL){
-
+    while(i < k && token != NULL)
+    {
         token = strtok(NULL, character);
         i++;
     }
